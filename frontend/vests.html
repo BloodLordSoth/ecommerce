@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bags</title>
+    <title>Vests</title>
     <style>
         body {
             display: flex;
@@ -48,8 +48,8 @@
 <script>
     const box = document.getElementById('box')
 
-    async function getBags(){
-        const res = await fetch('/products/bags')
+    async function getVests(){
+        const res = await fetch('/products/vests')
 
         const data = await res.json()
         data.forEach(item => {
@@ -67,5 +67,5 @@
             })
         })
     }
-    getBags()
+    getVests()
 </script>

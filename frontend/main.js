@@ -6,6 +6,9 @@ const home = document.getElementById('home')
 const products = document.getElementById('products')
 const productBox = document.getElementById('productBox')
 const prodBags = document.getElementById('prodBags')
+const prodCaps = document.getElementById('prodCaps')
+const prodJackets = document.getElementById('prodJackets')
+const prodVests = document.getElementById('prodVests')
 
 let debuffTime;
 
@@ -62,4 +65,16 @@ document.addEventListener('click', () => {
 
 prodBags.addEventListener('click', () => {
     iframe.src = 'bags.html'
+})
+
+prodCaps.addEventListener('click', () => {
+    iframe.src = 'caps.html'
+})
+
+prodJackets.addEventListener('click', () => {
+    iframe.src = 'jackets.html'
+})
+
+prodVests.addEventListener('click', () => {
+    iframe.src = 'vests.html'
 })

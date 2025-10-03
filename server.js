@@ -30,6 +30,47 @@ app.get('/products/bags', async (req, res) => {
     }
 })
 
+app.get('/products/vests', async (req, res) => {
+    try {
+        const data = await pool.query(
+            'SELECT * FROM products WHERE name ILIKE $1',
+            [`%vest%`]
+        )
+        res.status(200).send(data.rows)
+    }
+    catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
+})
+
+app.get('/products/caps', async (req, res) => {
+    try {
+        const data = await pool.query(
+            'SELECT * FROM products WHERE name ILIKE $1',
+            [`%cap%`]
+        )
+        res.status(200).send(data.rows)
+    }
+    catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
+})
+
+app.get('/products/jackets', async (req, res) => {
+    try {
+        const data = await pool.query(
+            'SELECT * FROM products WHERE name ILIKE $1',
+            [`%jacket%`]
+        )
+        res.status(200).send(data.rows)
+    }
+    catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
+})
 
 app.get('/products', (req, res) => {
     res.sendFile(path.join(__dir, 'frontend', 'products.html'))
@@ -37,6 +78,18 @@ app.get('/products', (req, res) => {
 
 app.get('/bags', (req, res) => {
     res.sendFile(path.join(__dir, 'frontend', 'bags.html'))
+})
+
+app.get('/vests', (req, res) => {
+    res.sendFile(path.join(__dir, 'frontend', 'bags.html'))
+})
+
+app.get('/jackets', (req, res) => {
+    res.sendFile(path.join(__dir, 'frontend', 'jackets.html'))
+})
+
+app.get('/caps', (req, res) => {
+    res.sendFile(path.join(__dir, 'frontend', 'caps.html'))
 })
 
 app.get('/shopping-cart', (req, res) => {
