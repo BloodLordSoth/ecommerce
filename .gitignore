@@ -1,0 +1,7 @@
+.env
+node_modules
+.vscode
+test.http
+scrape.js
+write.js
+sales.json

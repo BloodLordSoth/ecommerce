@@ -1,0 +1,28 @@
+{
+  "name": "deleteproj",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "devStart": "nodemon server.js",
+    "migrate:create": "npx node-pg-migrate create",
+    "migrate:up": "npx node-pg-migrate up",
+    "migrate:down": "npx node-pg-migrate down",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "puppeteer": "^24.23.0"
+  },
+  "devDependencies": {
+    "node-pg-migrate": "^8.0.3",
+    "nodemon": "^3.1.10"
+  }
+}
