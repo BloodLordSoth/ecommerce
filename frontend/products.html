@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="./productstyles.css"/>
+</head>
+<body>
+
+    <div id="appendBox">
+        <div id="imgCont"></div>
+        <div id="txtCont"></div>
+    </div>
+
+    <h3>Add to cart:</h3>
+    <div id="count">
+        <div id="plus">+</div>
+        <p>0</p>
+        <div id="minus">-</div>
+    </div>
+
+</body>
+</html>
+<script>
+    const imgCont = document.getElementById('imgCont')
+    const txtCont = document.getElementById('txtCont')
+
+    async function bags(){
+        const res = await fetch('/products/1')
+
+        const data = await res.json()
+        imgCont.innerHTML = `
+        <img width="200" height="200" src="${data.image}"/>
+        `
+        txtCont.innerHTML = `
+        <p>${data.name}</p>
+        <p>${data.price}</p>
+        `
+    }
+    bags()
+</script>

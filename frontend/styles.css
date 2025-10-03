@@ -1,0 +1,92 @@
+:root{
+    --gold: rgb(184, 159, 19);
+}
+body {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #111;
+}
+header {
+    color: white;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+}
+header h1{
+    margin-left: 10px;
+}
+header a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+}
+header a:hover {
+    color: rgb(184, 159, 19);
+    cursor: pointer;
+}
+iframe{
+    margin-top: 20px;
+    width: 100%;
+    height: 550px;
+}
+#message {
+    width: 300px;
+    border-radius: 10px;
+    background: #222;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+}
+#box {
+    border-radius: 10px;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    background: #111;
+    width: 600px;
+    height: fit-content;
+}
+.append {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    background: #222;
+    color: white;
+}
+#productBox{
+    margin-top: 20px;
+    margin-left: 40px;
+    position: absolute;
+    font-size: 18px;
+    display: none;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    background: #000;
+    color: white;
+}
+#productBox a{
+    padding: 2px;
+    text-decoration: none;
+    color: white;
+}
+#productBox a:hover {
+    cursor: pointer;
+    background: #222;
+    color: var(--gold);
+}
