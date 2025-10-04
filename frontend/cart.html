@@ -13,17 +13,70 @@
             background: white;
         }
         #box {
+            padding: 10px;
             background: #f0f0f0;
             width: 600px;
             border-top: 1px solid black;
             border-bottom: 1px solid black;
-            height: 200px;
+            height: fit-content;
             display: flex;
             align-items: center;
+            flex-direction: column;
             justify-content: center;
         }
         #box h3{
             text-align: center;
+        }
+        .append {
+            padding: 5px;
+            margin-top: 20px;
+            border: 4px solid #222;
+            width: 400px;
+            height: fit-content;
+            background: #222;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: space-between;
+            text-align: center;
+        }
+        #total {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #amt {
+            font-size: 18px;
+            background: white;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        .checkoutBtn {
+            width: 100px;
+            height: 40px;
+            border-radius: 10px;
+            background: lightgreen;
+            box-shadow: 2px 2px 6px black;
+            border: none;
+        }
+        .checkoutBtn:hover {
+            box-shadow: none;
+            cursor: pointer;
+        }
+        .delBtn {
+            border: none;
+            border-radius: 10px;
+            background: red;
+            width: 70px;
+            height: 25px;
+            box-shadow: 2px 2px 6px black;
+            margin-left: 10px;
+        }
+        .delBtn:hover {
+            cursor: pointer;
+            box-shadow: none;
         }
     </style>
 </head>
@@ -34,36 +87,12 @@
         <div id="box">
             <h3 id="default">There are no items in the shopping cart.</h3>
         </div>
+        <div id="total">
+                <h2>Total</h2>
+                <p id="amt">$121.12</p>
+            </div>
     </section>
 
 </body>
 </html>
-<script>
-    const box = document.getElementById('box')
-    const defaultTxt = document.getElementById('default')
-
-    async function fetchCart(){
-        const res = await fetch('/shoppingcart')
-
-        if (res.ok){
-            
-            box.innerHTML = ''
-            defaultTxt.textContent = ''
-
-            const data = await res.json()
-            data.forEach(item => {
-                const div = document.createElement('div')
-                div.classList.add('append')
-                div.innerHTML = `
-                <p>${item.name}</p>
-                <p>${item.price}</p>
-                `
-                box.appendChild(div)
-            })
-        } else {
-            defaultTxt.textContent = 'There are no items in the shopping cart.'
-        }
-
-    }
-    fetchCart()
-</script>
+<script src="./cart.js"></script>

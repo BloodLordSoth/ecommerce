@@ -56,6 +56,10 @@ window.addEventListener('load', () => {
     message.value = ''
 })
 
+window.addEventListener('beforeunload', () => {
+    localStorage.removeItem('link')
+})
+
 cart.addEventListener('click', () => {
     iframe.src = 'cart.html'
 })

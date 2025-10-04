@@ -58,6 +58,64 @@ app.get('/products/caps', async (req, res) => {
     }
 })
 
+app.post('/addtocart', async (req, res) => {
+    const { itemID, amount } = req.body
+
+    if (!itemID || !amount) return res.sendStatus(401);
+
+    try {
+        await pool.query(
+            'INSERT INTO cart_items (product_id, quantity) VALUES ($1, $2)',
+            [itemID, amount]
+        )
+        res.sendStatus(200)
+    }
+    catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
+})
+
+app.delete('/remove', async (req, res) => {
+    const id = req.body.id
+
+    if (!id) return res.sendStatus(404);
+
+    try {
+        await pool.query(
+            'DELETE FROM cart_items WHERE id = $1',
+            [id]
+        )
+        res.sendStatus(200)
+    }
+    catch (e){
+        console.error(e)
+        res.sendStatus(500)
+    }
+})
+
+app.get('/shoppingcart', async (req, res) => {
+    try {
+        const result = await pool.query(`
+      SELECT 
+        ci.id AS cart_item_id,
+        ci.quantity,
+        p.name,
+        p.price,
+        p.image
+      FROM cart_items ci
+      JOIN products p
+        ON ci.product_id = p.id
+    `);
+                
+        res.status(200).send(result.rows)
+    }
+    catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
+})
+
 app.get('/products/jackets', async (req, res) => {
     try {
         const data = await pool.query(

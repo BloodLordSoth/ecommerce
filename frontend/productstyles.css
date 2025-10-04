@@ -92,3 +92,22 @@ body {
             box-shadow: none;
             cursor: pointer;
         }
+        #added {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            display: none;
+            height: 60px;
+        }
+        #addedText{
+            text-align: center;
+            color: green;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { color: green; }
+            100% { color: white; }
+        }
