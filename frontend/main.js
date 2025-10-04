@@ -9,6 +9,7 @@ const prodBags = document.getElementById('prodBags')
 const prodCaps = document.getElementById('prodCaps')
 const prodJackets = document.getElementById('prodJackets')
 const prodVests = document.getElementById('prodVests')
+const cartBox = document.getElementById('cartBox')
 
 let debuffTime;
 
@@ -64,6 +65,10 @@ cart.addEventListener('click', () => {
     iframe.src = 'cart.html'
 })
 
+cart.addEventListener('mouseover', () => {
+    cartBox.style.display = 'flex'
+})
+
 home.addEventListener('click', () => {
     iframe.src = 'home.html'
 })
@@ -72,8 +77,9 @@ products.addEventListener('mouseenter', () => {
     productBox.style.display = 'flex'
 })
 
-document.addEventListener('click', () => {
+window.addEventListener('click', () => {
     productBox.style.display = 'none'
+    cartBox.style.display = 'none'
 })
 
 prodBags.addEventListener('click', () => {
@@ -91,3 +97,25 @@ prodJackets.addEventListener('click', () => {
 prodVests.addEventListener('click', () => {
     iframe.src = 'vests.html'
 })
+
+async function callBox(){
+    const res = await fetch('/shoppingcart')
+
+    const data = await res.json()
+    const btn = document.createElement('button')
+    btn.classList.add('checkoutBtn')
+    btn.textContent = 'Checkout'
+    data.forEach(item => {
+        const div = document.createElement('div')
+        div.classList.add('cartappend')
+        div.innerHTML = `
+        <p class="cartTxt">${item.quantity}</p>
+        <img class="cartImg" width="75" height="75" src="${item.image}"/>
+        <p class="cartTxt">${item.name}</p>
+        <p class="cartTxt">${item.price}</p>
+        `
+        cartBox.appendChild(div)
+        cartBox.appendChild(btn)
+    })
+}
+callBox()

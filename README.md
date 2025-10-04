@@ -1,0 +1,39 @@
+# Capstone project e-commerce site
+
+### Demo
+```
+will be posted as soon as completed
+```
+<br>
+
+![pic1](./frontend/assets/homess.png)
+
+<br>
+
+## Dependencies/stack
+```
+- Frontend HTML/CSS/Javascript
+- Backend Node.js/express
+- dependencies express cors dotenv pg nodemailer stripe
+- devDependencies nodemon node-pg-migrate
+
+- Included: within the tools dir, I've included my Puppeteer data scraping function, and the method I used to map the product information to the database.
+```
+
+## What I've learned
+```
+- With this project I've learned how to incorporate Stripe payments.
+
+- I've learned ways to map data I scraped with Puppeteer to batch insert information into my postgres database table.
+
+- I've learned how to build databases in relation to products and shopping carts.
+
+- Learned how to query more than one table at once with JOIN SQL query to send back data from 2 tables to my frontend.
+
+```
+
+<br>
+
+---
+### BloodLordSoth
+[GitHub](http://github.com/BloodLordSoth) | [YouTube](http://youtube.com/@BloodLordSoth)

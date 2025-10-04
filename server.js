@@ -3,6 +3,7 @@ import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import pool from './schema.js'
+import { sendMail } from './mailer.js'
 
 const app = express()
 const PORT = 4700
@@ -123,6 +124,21 @@ app.get('/products/jackets', async (req, res) => {
             [`%jacket%`]
         )
         res.status(200).send(data.rows)
+    }
+    catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
+})
+
+app.post('/signup', (req, res) => {
+    const email = req.body.email
+
+    if (!email) return res.sendStatus(401);
+
+    try {
+        sendMail(email)
+        res.sendStatus(200)
     }
     catch (e) {
         console.error(e)

@@ -3,19 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <style>
         body {
+            margin: 0 auto;
             background: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+        }
+        #box {
+            width: 500px;
+            height: 300px;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black
+        }
+        img {
+            min-width: 364px;
+        }
+        #footbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #join {
+            margin-left: 2px;
+            color: black;
+            background: #0000;
+            width: 60px;
+            height: 30px;
+            padding: 5px;
+            font-family: impact;
+            border: 1px solid black;
+        }
+        #join:hover {
+            color: white;
+            background: black;
+            cursor: pointer;
+        }
+        #email {
+            height: 19px;
+            color: black;
+            font-family: impact;
+            padding: 5px;
+            border: 1px solid black;
         }
     </style>
 </head>
 <body>
     <img src="./assets/cemetary.png"/>
-    <div id="box"></div>
+    
+    <main>
+        <div id="box"></div>
+    </main>
+
+    <footer>
+        <p><b>Join and get 20% off. Welcome to the Crypt</b></p>
+        <div id="footbox">
+            <input id="email" autocomplete="off" type="text" placeholder="Enter your Email"/>
+            <button id="join">Join</button>
+        </div>
+    </footer>
+
 </body>
 </html>
-<script src="./main.js"></script>
+<script src="./home.js"></script>

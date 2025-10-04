@@ -19,7 +19,7 @@ async function fetchCart(){
         total.style.display = 'none'
         return
     }
-    
+
     box.innerHTML = ''
     defaultTxt.textContent = ''
 
@@ -34,10 +34,10 @@ async function fetchCart(){
         delBtn.textContent = 'Remove'
         div.classList.add('append')
         div.innerHTML = `
-        <p>${item.name} |</p>
-        <p>${item.quantity} |</p>
+        <p>Amt: ${item.quantity}</p>
+        <img class="cartImg" width="150" height="150" src="${item.image}"/>
+        <p><b>${item.name}</b></p>
         <p>${item.price}</p>
-        <img src="${item.image}" width="100" height="100"/>
         `
         div.appendChild(delBtn)
         box.appendChild(div)
