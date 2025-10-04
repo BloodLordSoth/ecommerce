@@ -13,18 +13,25 @@
         <div id="txtCont"></div>
     </div>
 
-    <h3>Add to cart:</h3>
     <div id="count">
         <div id="plus">+</div>
-        <p>0</p>
+        <p id="counter"></p>
         <div id="minus">-</div>
     </div>
+
+    <div id="btn1"></div>
 
 </body>
 </html>
 <script>
     const imgCont = document.getElementById('imgCont')
     const txtCont = document.getElementById('txtCont')
+    const counter = document.getElementById('counter')
+    const plus = document.getElementById('plus')
+    const minus = document.getElementById('minus')
+    const btn1 = document.getElementById('btn1')
+    btn1.textContent = 'Add to cart'
+    
 
     const link = localStorage.getItem('link')
     async function bags(){
@@ -39,7 +46,41 @@
         <p>${data.price}</p>
         `
     }
-    bags()
+    //bags()
+
+    let num = 1
+    counter.textContent = num
+    plus.addEventListener('click', () => {
+        num++
+        counter.textContent = num
+    })
+
+    minus.addEventListener('click', () => {
+        if (num > 1){
+            num--
+            counter.textContent = num
+        }
+    })
+
+    btn1.addEventListener('click', async () => {
+      //  const dataObj = {
+     //       itemID: link,
+      //      amount: counter.value
+      //  }
+
+      //  const res = await fetch('/addtocart', {
+      //      method: "POST",
+      //      headers: { "Content-Type": "application/json" },
+      //      body: JSON.stringify(dataObj)
+      //  })
+
+      //  if (!res.ok){
+      //      window.alert('Issue connecting to the server')
+      //      return
+       // }
+
+        window.location.href = 'cart.html'
+    })
 
     window.addEventListener('beforeunload', () => {
         localStorage.removeItem('link')

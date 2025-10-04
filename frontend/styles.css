@@ -65,8 +65,13 @@ iframe{
     border-radius: 10px;
     width: fit-content;
     height: fit-content;
-    background: #222;
+    background: #333;
     color: white;
+}
+.append:hover {
+    cursor: pointer;
+    background: #222;
+    border: 2px solid white;
 }
 #productBox{
     margin-top: 20px;

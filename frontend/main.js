@@ -16,6 +16,7 @@ message.addEventListener('input', () => {
     clearTimeout(debuffTime)
 
     if (message.value.length > 0){
+        box.style.display = 'flex'
         debuffTime = setTimeout(async () => {
             const res = await fetch('/query', {
                 method: "POST",
@@ -30,11 +31,19 @@ message.addEventListener('input', () => {
                 div.style.margin = "10px"
                 div.classList.add('append')
                 div.innerHTML = `
-                <p>${item.name}</p>
+                <p>${item.name}  </p>
                 <p>${item.price}</p>
                 <img width="100" height="100" src="${item.image}"/>
                 `
                 box.appendChild(div)
+
+                div.addEventListener('click', () => {
+                    message.value = ''
+                    localStorage.setItem('link', item.id)
+                    iframe.src = `products.html`
+                    box.style.display = 'none'
+                    box.innerHTML = ''
+                })
             })
         }, 400)
     } else {

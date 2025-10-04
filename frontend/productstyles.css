@@ -35,6 +35,7 @@ body {
             height: 150px;
         }
         #count {
+            margin-top: 30px;
             box-shadow: 2px 2px 6px black;
             width: 170px;
             height: 40px;
@@ -72,4 +73,22 @@ body {
             cursor: pointer;
             background: red;
             opacity: 70%;
+        }
+        #btn1 {
+            background: lightgreen;
+            width: 150px;
+            border-radius: 20px;
+            height: 40px;
+            margin-top: 20px;
+            box-shadow: 2px 2px 6px black;
+            border: none;
+            color: #111;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #btn1:hover {
+            box-shadow: none;
+            cursor: pointer;
         }

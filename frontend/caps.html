@@ -48,7 +48,7 @@
 <script>
     const box = document.getElementById('box')
 
-    async function getBags(){
+    async function getCaps(){
         const res = await fetch('/products/caps')
 
         const data = await res.json()
@@ -67,5 +67,5 @@
             })
         })
     }
-    getBags()
+    getCaps()
 </script>

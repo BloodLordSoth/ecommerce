@@ -3,25 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shopping-cart</title>
     <style>
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             background: white;
         }
         #box {
             background: #f0f0f0;
-            box-shadow: 2px 2px 6px black;
-            width: 100px;
-            height: 100px;
+            width: 600px;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #box h3{
+            text-align: center;
         }
     </style>
 </head>
 <body>
     
+    <h1>My cart</h1>
     <section>
-        <h2>My cart</h2>
-        <div id="box"></div>
+        <div id="box">
+            <h3 id="default">There are no items in the shopping cart.</h3>
+        </div>
     </section>
 
 </body>
 </html>
+<script>
+    const box = document.getElementById('box')
+    const defaultTxt = document.getElementById('default')
+
+    async function fetchCart(){
+        const res = await fetch('/shoppingcart')
+
+        if (res.ok){
+            
+            box.innerHTML = ''
+            defaultTxt.textContent = ''
+
+            const data = await res.json()
+            data.forEach(item => {
+                const div = document.createElement('div')
+                div.classList.add('append')
+                div.innerHTML = `
+                <p>${item.name}</p>
+                <p>${item.price}</p>
+                `
+                box.appendChild(div)
+            })
+        } else {
+            defaultTxt.textContent = 'There are no items in the shopping cart.'
+        }
+
+    }
+    fetchCart()
+</script>
