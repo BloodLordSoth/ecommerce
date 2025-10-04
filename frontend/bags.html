@@ -12,6 +12,7 @@
             flex-direction: column;
         }
         #box{
+            padding: 5px;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -23,9 +24,10 @@
             box-shadow: 2px 2px 6px black;
         }
         .append {
+            padding: 5px;
             margin-top: 20px;
             border: 4px solid #222;
-            width: fit-content;
+            width: 400px;
             height: fit-content;
             background: #222;
             color: white;
@@ -33,11 +35,26 @@
             align-items: center;
             justify-content: center;
             flex-direction: space-between;
+            text-align: center;
         }
         .append:hover{
             cursor: pointer;
             box-shadow: 2px 2px 4px black;
             background: #333;
+        }
+        .btn1 {
+            margin-left: 10px;
+            border: none;
+            background: lightgreen;
+            height: 30px;
+            width: 100px;
+            border-radius: 10px;
+        }
+        .btn1:hover {
+            border: 2px solid lightgreen;
+            background: transparent;
+            color: lightgreen;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -53,14 +70,25 @@
 
         const data = await res.json()
         data.forEach(item => {
+            const btn = document.createElement('button')
+            btn.textContent = 'Add to Cart'
+            btn.classList.add('btn1')
             const div = document.createElement('div')
             div.classList.add('append')
             div.innerHTML = `
             <img width="150" height="150" src="${item.image}"/>
-            <p>${item.name}</p>
+            <p><b>${item.name}</b></p>
             <p>${item.price}</p>
             `
+            div.appendChild(btn)
             box.appendChild(div)
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                console.log('clicked')
+            })
+
             div.addEventListener('click', () => {
                 const id = localStorage.setItem('link', item.id)
                 window.location.href = `products.html`
