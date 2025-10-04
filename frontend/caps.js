@@ -18,10 +18,28 @@ const box = document.getElementById('box')
             div.appendChild(btn)
             box.appendChild(div)
 
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', async (e) => {
                 e.preventDefault()
                 e.stopPropagation()
-                console.log('clicked')
+                const res = await fetch('/addtocart', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ itemID: item.id, amount: '1'})
+                })
+
+                if (!res.ok){
+                    window.alert('Error connecting to the server')
+                    return
+                }
+
+                const yay = document.createElement('p')
+                yay.style.color = 'lightgreen'
+                yay.style.marginLeft = '10px'
+                yay.textContent = 'Success'
+                div.appendChild(yay)
+                setTimeout(() => {
+                    div.removeChild(yay)
+                }, 2000)
             })
 
             div.addEventListener('click', () => {

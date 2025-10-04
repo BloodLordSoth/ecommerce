@@ -65,7 +65,7 @@ app.post('/addtocart', async (req, res) => {
 
     try {
         await pool.query(
-            'INSERT INTO cart_items (product_id, quantity) VALUES ($1, $2)',
+            'INSERT INTO cart_items (product_id, quantity) VALUES ($1, $2) ON CONFLICT (product_id) DO UPDATE SET quantity = cart_items.quantity + EXCLUDED.quantity',
             [itemID, amount]
         )
         res.sendStatus(200)
