@@ -40,6 +40,8 @@ will be posted as soon as completed
 
 - Learned how to handle Stripe webhooks upon successful transaction.
 
+- Learned Frontend concepts like stopPropagation and new URLSearchParams for iframes.
+
 ```
 
 <br>

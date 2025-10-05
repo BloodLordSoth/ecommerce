@@ -22,11 +22,6 @@ const chatmessage = document.getElementById('chatmessage')
 let debuffTime;
 let isopen = false;
 
-const succ = localStorage.getItem("success")
-if (succ){
-    iframe.src = 'success.html'
-}
-
 message.addEventListener('input', () => {
     clearTimeout(debuffTime)
 
@@ -69,6 +64,22 @@ message.addEventListener('input', () => {
 
 window.addEventListener('load', () => {
     message.value = ''
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+    const url = new URLSearchParams(window.location.search)
+    const view = url.get('view')
+
+    window.history.replaceState({}, document.title, '/')
+
+    if (view === 'success'){
+        iframe.src = 'success.html'
+        setTimeout(() => {
+            iframe.src = 'home.html'
+        }, 2000)
+    } else {
+        iframe.src = 'home.html'
+    }
 })
 
 cart.addEventListener('click', () => {

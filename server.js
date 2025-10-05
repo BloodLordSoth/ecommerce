@@ -113,7 +113,7 @@ app.post('/checkout', async (req, res) => {
             payment_method_types: ['card'],
             mode: 'payment',
             line_items,
-            success_url: `${process.env.SERVER_URL}/success.html`,
+            success_url: `${process.env.SERVER_URL}/index.html?view=success`,
             cancel_url: `${process.env.SERVER_URL}/cancel.html`,
         })
 
