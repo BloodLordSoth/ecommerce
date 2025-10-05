@@ -6,6 +6,10 @@
 
 ## Images
 
+![gifpic](./frontend/assets/ecommerce.gif)
+
+<br>
+
 ![pic1](./frontend/assets/cryptss2.png)
 
 <br>
@@ -13,6 +17,10 @@
 ![pic2](./frontend/assets/cryptss.png)
 
 <br>
+
+## Description
+
+- This is my Boot.dev capstone project, and another one for the portfolio. This project allows a user to search for products inside a database, add items to cart, remove items, purchase them through Stripe's API, and communicate with an openAI chatbot which was fed the scraped product data for the project.
 
 ## Stack/Dependencies
 ```
