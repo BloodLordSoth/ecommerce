@@ -263,10 +263,9 @@ iframe{
     font-size: 16px;
     background: lightgreen;
     color: black;
-    width: 500px;
+    width: fit-content;
     height: fit-content;
     display: flex;
-    text-align: end;
 }
 .empty {
     width: fit-content;
