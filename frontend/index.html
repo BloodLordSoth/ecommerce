@@ -27,8 +27,25 @@
 
     <input id="message" type="text" placeholder="Search Products" autocomplete="off"/>
     <div id="box"></div>
+    
+    <main>
+        <div id="chatboxcontainer">
+            <div id="chatbox"></div>
+            <div id="container">
+                <form id="form">
+                    <input type="text" id="chatmessage" autocomplete="off" placeholder="Type question here"/>
+                    <button type="submit" id="chatBtn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
     <iframe id="iframe" src="home.html"></iframe>
+
+    <footer>
+        <button id="chat">Chat with assistant</button>
+        <button id="closechat">Close chat</button>
+    </footer>
 
 </body>
 </html>
-<script src="./main.js"></script>
+<script type="module" src="./main.js"></script>

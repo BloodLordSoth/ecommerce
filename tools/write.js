@@ -1,5 +1,5 @@
 import fs from 'fs'
-import pool from './schema.js'
+import pool from '../schema.js'
 
 const info = JSON.parse(fs.readFileSync('sales.json'))
 

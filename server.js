@@ -4,6 +4,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import pool from './schema.js'
 import { sendMail } from './mailer.js'
+import { callAI } from './aiassist.js'
 
 const app = express()
 const PORT = 4700
@@ -139,6 +140,21 @@ app.post('/signup', (req, res) => {
     try {
         sendMail(email)
         res.sendStatus(200)
+    }
+    catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
+})
+
+app.post('/sendchat', async (req, res) => {
+    const message = req.body.message
+
+    if (!message) return res.sendStatus(401);
+
+    try {
+        const data = await callAI(message)
+        res.status(200).send({ reply: data })
     }
     catch (e) {
         console.error(e)

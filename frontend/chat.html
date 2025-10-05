@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Assistant</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #box {
+            width: 600px;
+            height: 400px;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 2px 2px 5px black;
+        }
+        #container {
+            margin-top: 3px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #chatbox {
+            background: #fff;
+            display: flex;
+            overflow-y: auto;
+            width: 500px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        #message {
+            padding: 5px;
+            width: 390px;
+        }
+        #chatBtn {
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+    <main>
+        <div id="box">
+            <div id="chatbox"></div>
+            <div id="container">
+                <input type="text" id="message" autocomplete="off" placeholder="Type message"/>
+                <button id="chatBtn">Submit</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

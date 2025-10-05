@@ -6,15 +6,21 @@ will be posted as soon as completed
 ```
 <br>
 
-![pic1](./frontend/assets/homess.png)
+## Images
+
+![pic1](./frontend/assets/cryptss2.png)
 
 <br>
 
-## Dependencies/stack
+![pic2](./frontend/assets/cryptss.png)
+
+<br>
+
+## Stack/Dependencies
 ```
 - Frontend HTML/CSS/Javascript
 - Backend Node.js/express
-- dependencies express cors dotenv pg nodemailer stripe
+- dependencies express cors dotenv pg nodemailer stripe openai puppeteer fs
 - devDependencies nodemon node-pg-migrate
 
 - Included: within the tools dir, I've included my Puppeteer data scraping function, and the method I used to map the product information to the database.
@@ -25,6 +31,8 @@ will be posted as soon as completed
 - With this project I've learned how to incorporate Stripe payments.
 
 - I've learned ways to map data I scraped with Puppeteer to batch insert information into my postgres database table.
+
+- Learned about price_in_cents and creating conversion helper tools to map my converted prices to be accepted by Stripe.
 
 - I've learned how to build databases in relation to products and shopping carts.
 

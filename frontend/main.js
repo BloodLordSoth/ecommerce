@@ -1,3 +1,4 @@
+//import { marked } from 'marked'
 const message = document.getElementById('message')
 const box = document.getElementById('box')
 const cart = document.getElementById('cart')
@@ -10,8 +11,16 @@ const prodCaps = document.getElementById('prodCaps')
 const prodJackets = document.getElementById('prodJackets')
 const prodVests = document.getElementById('prodVests')
 const cartBox = document.getElementById('cartBox')
+const chat = document.getElementById('chat')
+const closechat = document.getElementById('closechat')
+const chatbox = document.getElementById('chatboxcontainer')
+const form = document.getElementById('form')
+const chatwindow = document.getElementById('chatbox')
+const chatBtn = document.getElementById('chatBtn')
+const chatmessage = document.getElementById('chatmessage')
 
 let debuffTime;
+let isopen = false;
 
 message.addEventListener('input', () => {
     clearTimeout(debuffTime)
@@ -63,6 +72,55 @@ window.addEventListener('beforeunload', () => {
 
 cart.addEventListener('click', () => {
     iframe.src = 'cart.html'
+})
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    if (chatmessage.value.length === 0){
+        return
+    }
+
+    const msg = document.createElement('div')
+    msg.textContent = chatmessage.value
+    msg.classList.add('user')
+    chatwindow.appendChild(msg)
+
+    const res = await fetch('/sendchat', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: chatmessage.value })
+    })
+    
+    chatmessage.value = ''
+    chatwindow.scrollTop = chatwindow.scrollHeight
+
+    if (!res.ok){
+        window.alert('Error connection with server')
+        return
+    }
+
+    const data = await res.json()
+    const aidiv = document.createElement('div')
+    aidiv.innerHTML = data.reply
+    aidiv.classList.add('aidiv')
+    chatwindow.appendChild(aidiv)
+    chatwindow.scrollTop = chatwindow.scrollHeight
+    
+})
+
+chat.addEventListener('click', () => {
+    closechat.style.display = 'flex'
+    chat.style.display = 'none'
+    chatbox.style.animation = 'appear 1s forwards'
+    chatbox.style.display = 'flex'
+})
+
+closechat.addEventListener('click', () => {
+    closechat.style.display = 'none'
+    chat.style.display = 'flex'
+    chatbox.style.animation = 'vanish 1s forwards'
+    chatbox.style.display = 'none'
 })
 
 cart.addEventListener('mouseover', () => {
