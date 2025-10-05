@@ -1,10 +1,8 @@
 # Capstone project e-commerce site
 
 ### Demo
-```
-will be posted as soon as completed
-```
-<br>
+**[https://ecommerce-g8ej.onrender.com/](https://ecommerce-g8ej.onrender.com/)**
+
 
 ## Images
 
