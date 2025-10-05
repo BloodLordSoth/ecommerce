@@ -18,6 +18,7 @@ const form = document.getElementById('form')
 const chatwindow = document.getElementById('chatbox')
 const chatBtn = document.getElementById('chatBtn')
 const chatmessage = document.getElementById('chatmessage')
+const header = document.getElementById('header')
 
 let debuffTime;
 let isopen = false;
@@ -139,39 +140,53 @@ cart.addEventListener('mouseover', () => {
     cartBox.style.display = 'flex'
 })
 
+header.addEventListener('click', () => {
+   // productBox.style.display = 'none'
+})
+
 home.addEventListener('click', () => {
     iframe.src = 'home.html'
 })
 
-products.addEventListener('mouseenter', () => {
+products.addEventListener('click', () => {
     productBox.style.display = 'flex'
 })
 
 window.addEventListener('click', () => {
-    productBox.style.display = 'none'
+    //productBox.style.display = 'flex'
     cartBox.style.display = 'none'
 })
 
 prodBags.addEventListener('click', () => {
     iframe.src = 'bags.html'
+    productBox.style.display = 'none'
 })
 
 prodCaps.addEventListener('click', () => {
     iframe.src = 'caps.html'
+    productBox.style.display = 'none'
 })
 
 prodJackets.addEventListener('click', () => {
     iframe.src = 'jackets.html'
+    productBox.style.display = 'none'
 })
 
 prodVests.addEventListener('click', () => {
     iframe.src = 'vests.html'
+    productBox.style.display = 'none'
 })
 
 async function callBox(){
     const res = await fetch('/shoppingcart')
 
     const data = await res.json()
+    if (data.length === 0){
+        const empty = document.createElement('div')
+        empty.classList.add('empty')
+        empty.innerHTML = '<h3>There are no items in the cart</h3>'
+        cartBox.appendChild(empty)
+    }
     const btn = document.createElement('button')
     const total = res.headers.get('X-cart-total')
     const val = total / 100
@@ -191,9 +206,24 @@ async function callBox(){
         cartBox.appendChild(div)
         cartBox.appendChild(btn)
 
+        btn.addEventListener('click', async () => {
+            const res2 = await fetch('/checkout', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    info: data.map(item => ({
+                        product_id: item.product_id,
+                        quantity: item.quantity
+                    }))
+                })
+            })
+
+            const data2 = await res2.json()
+            window.parent.location.href = data2.url
+        })
+
         div.addEventListener('click', () => {
-            localStorage.setItem("link", id)
-            iframe.src = `products.html`
+            iframe.src = `cart.html`
         })
     })
 }
