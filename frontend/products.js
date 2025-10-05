@@ -57,6 +57,7 @@ btn1.addEventListener('click', async () => {
         added.style.display = 'inline'
         setTimeout(() => {
             added.style.display = 'none'
+            window.parent.location.reload()
         }, 3000)
     } else {
         window.alert('Issue connecting to the server')

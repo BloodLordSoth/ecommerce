@@ -21,7 +21,8 @@
     "nodemailer": "^7.0.6",
     "openai": "^6.1.0",
     "pg": "^8.16.3",
-    "puppeteer": "^24.23.0"
+    "puppeteer": "^24.23.0",
+    "stripe": "^19.1.0"
   },
   "devDependencies": {
     "node-pg-migrate": "^8.0.3",

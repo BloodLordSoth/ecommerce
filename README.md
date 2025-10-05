@@ -38,6 +38,8 @@ will be posted as soon as completed
 
 - Learned how to query more than one table at once with JOIN SQL query to send back data from 2 tables to my frontend.
 
+- Learned how to handle Stripe webhooks upon successful transaction.
+
 ```
 
 <br>

@@ -12,17 +12,21 @@ async function fetchCart(){
     }
     
     const data = await res.json()
-
+    
     
     if (data.length === 0){
         defaultTxt.textContent = 'There are no items in the shopping cart.'
         total.style.display = 'none'
         return
     }
-
+    
     box.innerHTML = ''
     defaultTxt.textContent = ''
+    const totalCents = res.headers.get('X-cart-total')
+    const val = totalCents / 100
+    const frmt = `£${val.toFixed(2)}`
 
+    amt.textContent = frmt
     const btn = document.createElement('button')
     btn.classList.add('checkoutBtn')
     btn.textContent = `Checkout ${amt.textContent}`
@@ -44,6 +48,22 @@ async function fetchCart(){
         total.appendChild(btn)
         total.style.display = 'flex'
 
+        btn.addEventListener('click', async () => {
+            const res2 = await fetch('/checkout', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    info: data.map(item => ({
+                        product_id: item.product_id,
+                        quantity: item.quantity
+                    }))
+                })
+            })
+
+            const data2 = await res2.json()
+            window.parent.location.href = data2.url
+        })
+
         delBtn.addEventListener('click', async () => {
             const res = await fetch('/remove', {
                 method: "DELETE",
@@ -51,7 +71,7 @@ async function fetchCart(){
                 body: JSON.stringify({ id: item.cart_item_id })
             })
 
-            window.location.reload()
+            window.parent.location.reload()
         })
     })
 

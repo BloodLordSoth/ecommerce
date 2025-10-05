@@ -38,6 +38,7 @@ const box = document.getElementById('box')
                 yay.textContent = 'Success'
                 div.appendChild(yay)
                 setTimeout(() => {
+                    window.parent.location.reload()
                     div.removeChild(yay)
                 }, 2000)
             })

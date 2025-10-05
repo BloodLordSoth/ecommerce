@@ -39,6 +39,7 @@ const box = document.getElementById('box')
                 div.appendChild(yay)
                 setTimeout(() => {
                     div.removeChild(yay)
+                    window.parent.location.reload()
                 }, 2000)
             })
 

@@ -22,6 +22,11 @@ const chatmessage = document.getElementById('chatmessage')
 let debuffTime;
 let isopen = false;
 
+const succ = localStorage.getItem("success")
+if (succ){
+    iframe.src = 'success.html'
+}
+
 message.addEventListener('input', () => {
     clearTimeout(debuffTime)
 
@@ -64,10 +69,6 @@ message.addEventListener('input', () => {
 
 window.addEventListener('load', () => {
     message.value = ''
-})
-
-window.addEventListener('beforeunload', () => {
-    localStorage.removeItem('link')
 })
 
 cart.addEventListener('click', () => {
@@ -161,9 +162,13 @@ async function callBox(){
 
     const data = await res.json()
     const btn = document.createElement('button')
+    const total = res.headers.get('X-cart-total')
+    const val = total / 100
+    const totalVal = `£${val.toFixed(2)}`
     btn.classList.add('checkoutBtn')
-    btn.textContent = 'Checkout'
+    btn.textContent = `Checkout: ${totalVal}`
     data.forEach(item => {
+        const id = item.product_id
         const div = document.createElement('div')
         div.classList.add('cartappend')
         div.innerHTML = `
@@ -174,6 +179,11 @@ async function callBox(){
         `
         cartBox.appendChild(div)
         cartBox.appendChild(btn)
+
+        div.addEventListener('click', () => {
+            localStorage.setItem("link", id)
+            iframe.src = `products.html`
+        })
     })
 }
 callBox()

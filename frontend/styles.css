@@ -122,7 +122,7 @@ iframe{
     margin-top: 20px;
     border: 4px solid #222;
     width: fit-content;
-    height: 50px;
+    height: 70px;
     background: #222;
     color: white;
     display: flex;
@@ -131,6 +131,10 @@ iframe{
     justify-content: center;
     flex-direction: space-between;
     text-align: center;
+}
+.cartappend:hover {
+    box-shadow: none;
+    cursor: pointer;
 }
 #cartBox h2 {
     text-align: center;
@@ -254,16 +258,14 @@ iframe{
 }
 .aidiv {
     margin-top: 10px;
-    margin-right: 10px;
     border-radius: 10px;
     padding: 5px;
     font-size: 16px;
     background: lightgreen;
     color: black;
-    width: fit-content;
+    width: 500px;
     height: fit-content;
     display: flex;
-    justify-content: end;
     text-align: end;
 }
 

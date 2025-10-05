@@ -39,6 +39,7 @@ async function getVests(){
                 div.appendChild(yay)
                 setTimeout(() => {
                     div.removeChild(yay)
+                    window.parent.location.reload()
                 }, 2000)
             })
 
